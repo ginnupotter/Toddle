@@ -161,15 +161,19 @@
 
     function setWord() {
       
-      var wordList = new Array("FAT","CAT","MAT","BIT","TAP","DOG","POP","SIP","DIP","PAN","BAT");
+      var wordList = new Array("FAT","CAT","MAT","BIT","TAP","DOG","POP","SIP","DIP","PAN","BAT","AND","FIX","OWN","ARE","FLY","ODD","APE","FRY","OUR","ACE","FOR","PET","ACT","GOT","PAT","ASK","GET","PEG","ARM","GOD","PAW","AGE","GEL","PUP","AGO","GAS","PIT","AIR","HAT","PUT","ATE","HIT","POT","ALL","HAS","POP","BUT","HAD","PIN","BYE","HOW","RAT","BAD","HER","RAG","AND","FIX","OWN","ARE","FLY","ODD","APE","FRY","OUR","ACE","FOR","PET","ACT","BIG","HIS","RUB","BED","HEN","ROW","BAT","INK","RUG","BOY","ICE","RUN","BUS","ILL","RAP","BAG","JAB","RAM","BOX","JUG","SOW","BIT","JET","SEE","BEE","JAM","SAW","BUY","JAR","SET","BUN","JOB","SIT","CUB","JOG","SIR","CAT","KIT","SAT","CAR","KEY","SOB","CUT","LOT","TAP","COW","LIT","TIP","CRY","LET","TOP","CAB","LAY","TUG","CAN","MAT","TOW","DAD","MAN","TOE","DAB","MAD","TAN","DAM","MUG","TEN","DID","MIX","TWO","DUG","MAP","USE","DEN","MUM","VAN","DOT","MUD","VET","DIP","MOM","WAS","DAY","MAY","WET","EAR","MET","WIN","EYE","NET","WON","EAT","NEW","WIG","END","NAP","WAR","ELF","NOW","WHY","EGG","NOD","WHO","FAR","NET","WAY","FAT","NOT","WOW","FEW","NUT","YOU","FAN","OAR","YES","FUN","ONE","YAK","FIT","OUT","YET","FIN","OWL","ZIP","FOX","OLD","ZAP");
       //var fileContents = readTextFile('https://drive.google.com/file/d/1-dVy7b0zlWTtsPiBSO9IW9lEEOZlCumv/view?usp=sharing');
       var now = new Date();
       var start = new Date(now.getFullYear(), 0, 0);
       var diff = (now - start) + ((start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000);
       var oneDay = 1000 * 60 * 60 * 24;
       var day = Math.floor(diff / oneDay); //find day of the year to pick the word from the array
-      return wordList[5];
+      if(day > 180) {
+        return wordList[day-50];
 
+      } else {
+      return wordList[day];
+      }
     }
 
     /*Function to disable all but first row and bring focus to first character on page load*/
