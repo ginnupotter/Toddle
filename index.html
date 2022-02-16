@@ -2,387 +2,143 @@
 <html>
   
 <head>
-  <style>
+  <link rel="icon" type="image/png" href="abc.png">
+  <title>Toddle - a word game for kids</title>
+  <meta name="description" content="A hobby project based on original wordle game to help kids learn 3 letter words" />
+  <meta name="Toddle - a word game for little kids" content="A hobby project based on original wordle game to help kids learn to read" />
+  <meta name="googlebot" content="notranslate" />
 
-      .center {
-        margin: 0 auto;
-        padding: 10px;
-      }
-      .bodycenter {
-        margin: 0 auto;
-        padding: 10px;
-      }
-
-      .parent {
-        display: grid;
-        place-items: center;
-      }
-
-    .wordlechars {
-      background-color: rgb(255, 255, 255);
-      color: rgb(5, 4, 4);
-      width: 25pt;
-      height: 25pt;
-      font-size:25px;
-      font-family: "Comic Sans MS";
-      text-transform: uppercase;
-      border-radius: 5px;
-      text-align: center;
-    }
-
-    .wordleCharsGreen {
-      background-color: rgb(65, 179, 20);
-      color: rgb(4, 5, 5);
-      width: 25pt;
-      height: 25pt;
-      font-size:25px;
-      font-family: "Comic Sans MS";
-      text-transform: uppercase;
-      border-radius: 5px;
-      text-align: center;
-    }
-
-    .wordleCharsYellow {
-      background-color: rgb(240, 237, 61);
-      color: rgb(4, 5, 5);
-      width: 25pt;
-      height: 25pt;
-      font-size:25px;
-      font-family: "Comic Sans MS";
-      text-transform: uppercase;
-      border-radius: 5px;
-      text-align: center;
-    }
-
-    .wordleCharsGrey {
-      background-color: rgb(156, 160, 160);
-      color: rgb(4, 5, 5);
-      width: 25pt;
-      height: 25pt;
-      font-size:25px;
-      font-family: "Comic Sans MS";
-      text-transform: uppercase;
-      border-radius: 5px;
-      text-align: center;
-    }
-
-    /* The snackbar - position it at the bottom and in the middle of the screen */
-    #snackbar {
-      visibility: hidden;
-      /* Hidden by default. Visible on click */
-      min-width: 50px;
-      /* Set a default minimum width */
-      margin-left: -124px;
-      /* Divide value of min-width by 2 */
-      background-color: #333;
-      /* Black background color */
-      color: #fff;
-      /* White text color */
-      text-align: center;
-      /* Centered text */
-      font-size: 20px;
-      border-radius: 2px;
-      /* Rounded borders */
-      padding: 16px;
-      /* Padding */
-      position: fixed;
-      /* Sit on top of the screen */
-      z-index: 1;
-      /* Add a z-index if needed */
-      left: 50%;
-      /* Center the snackbar */
-      bottom: auto;
-      /* 30px from the bottom */
-    }
-
-    /* Show the snackbar when clicking on a button (class added with JavaScript) */
-    #snackbar.show {
-      visibility: visible;
-      /* Show the snackbar */
-      /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
-      However, delay the fade out process for 2.5 seconds */
-      -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-      animation: fadein 0.5s, fadeout 0.5s 2.5s;
-    }
-
-    /* Animations to fade the snackbar in and out */
-    @-webkit-keyframes fadein {
-      from {
-        bottom: auto;
-        opacity: 0;
-      }
-
-      to {
-        bottom: auto;
-        opacity: 1;
-      }
-    }
-
-    @keyframes fadein {
-      from {
-        bottom: auto;
-        opacity: 0;
-      }
-
-      to {
-        bottom: auto;
-        opacity: 1;
-      }
-    }
-
-    @-webkit-keyframes fadeout {
-      from {
-        bottom: auto;
-        opacity: 1;
-      }
-
-      to {
-        bottom: auto;
-        opacity: 0;
-      }
-    }
-
-    @keyframes fadeout {
-      from {
-        bottom: auto;
-        opacity: 1;
-      }
-
-      to {
-        bottom: auto;
-        opacity: 0;
-      }
-    }
-  </style>
-  <script>
-
-    var word = "";
-    var counter = 0;
-
-    function setWord() {
-      
-      var wordList = new Array("FAT","CAT","MAT","BIT","TAP","DOG","POP","SIP","DIP","PAN","BAT","AND","FIX","OWN","ARE","FLY","ODD","APE","FRY","OUR","ACE","FOR","PET","ACT","GOT","PAT","ASK","GET","PEG","ARM","GOD","PAW","AGE","GEL","PUP","AGO","GAS","PIT","AIR","HAT","PUT","ATE","HIT","POT","ALL","HAS","POP","BUT","HAD","PIN","BYE","HOW","RAT","BAD","HER","RAG","AND","FIX","OWN","ARE","FLY","ODD","APE","FRY","OUR","ACE","FOR","PET","ACT","BIG","HIS","RUB","BED","HEN","ROW","BAT","INK","RUG","BOY","ICE","RUN","BUS","ILL","RAP","BAG","JAB","RAM","BOX","JUG","SOW","BIT","JET","SEE","BEE","JAM","SAW","BUY","JAR","SET","BUN","JOB","SIT","CUB","JOG","SIR","CAT","KIT","SAT","CAR","KEY","SOB","CUT","LOT","TAP","COW","LIT","TIP","CRY","LET","TOP","CAB","LAY","TUG","CAN","MAT","TOW","DAD","MAN","TOE","DAB","MAD","TAN","DAM","MUG","TEN","DID","MIX","TWO","DUG","MAP","USE","DEN","MUM","VAN","DOT","MUD","VET","DIP","MOM","WAS","DAY","MAY","WET","EAR","MET","WIN","EYE","NET","WON","EAT","NEW","WIG","END","NAP","WAR","ELF","NOW","WHY","EGG","NOD","WHO","FAR","NET","WAY","FAT","NOT","WOW","FEW","NUT","YOU","FAN","OAR","YES","FUN","ONE","YAK","FIT","OUT","YET","FIN","OWL","ZIP","FOX","OLD","ZAP");
-      //var fileContents = readTextFile('https://drive.google.com/file/d/1-dVy7b0zlWTtsPiBSO9IW9lEEOZlCumv/view?usp=sharing');
-      var now = new Date();
-      var start = new Date(now.getFullYear(), 0, 0);
-      var diff = (now - start) + ((start.getTimezoneOffset() - now.getTimezoneOffset()) * 60 * 1000);
-      var oneDay = 1000 * 60 * 60 * 24;
-      var day = Math.floor(diff / oneDay); //find day of the year to pick the word from the array
-      if(day > 180) {
-        return wordList[day-50];
-
-      } else {
-      return wordList[day];
-      }
-    }
-
-    /*Function to disable all but first row and bring focus to first character on page load*/
-    function onPageload() {
-     
-    word = setWord();
-      var wordnum = 1;
-      for (let index = wordnum; index < 5; index++) {
-                document.getElementsByName("row" + index).forEach(e => {
-          e.disabled = true;
-        });
-      }
-      document.getElementById("00").focus();
-    }
-
-    function countString(str, letter) {
-
-      // creating regex 
-      const re = new RegExp(letter, 'ig');
-
-      // matching the pattern
-      const count = str.match(re).length;
-
-      return count;
-    }
-
-    function find(needle, arr) {
-    var results = [];
-    var idx = arr.indexOf(needle);
-  //  alert(idx);
-    while (idx != -1) {
-        results.push(idx);
-        idx = arr.indexOf(needle, idx + 1);
-       // alert(idx);
-    }
-   //alert(results.toString());
-    return results;
-}
-
-    function onSubmit() {
-
-      var keyWord = Array.from(word);
-      let enteredWord = document.getElementsByName("row" + counter + "");
-      var charCheck = new Array(enteredWord.length);
-      var copyEnteredWord = new Array(enteredWord.length);
-      var keyCharCount = new Array(word.length);
-      var enteredCharCount = new Array(enteredWord.length);
-      var matchReturn = 0;
-      var matchCounter = 0;
-
-      var dispMsgIncomplete = "Insufficient Letters Entered";
-      var dispMsgComplete = "Congratulations";
-
-      for (let index = 0; index < enteredWord.length; index++) {
-        copyEnteredWord[index]=enteredWord[index].value;
-      }
-
-      for (let index = 0; index < enteredWord.length; index++) {
-     
-        if(!enteredWord[index].value) {
-          showMessage(dispMsgIncomplete);
-          return;
-        }
-
-        matchReturn = matchingLogic(keyWord,enteredWord[index].value.toUpperCase() , index);
-        if (matchReturn == 1) {
-          charCheck[index] = 1;
-          matchCounter++;
-
-        } else if (matchReturn == 2) {
-
-          charCheck[index] = 2;
-
-        } else if (matchReturn == 0) {
-          charCheck[index] = 0;
-
-        }
-
-      }
-
-      for (let index = 0; index < enteredWord.length; index++) {
-        if (charCheck[index] == 1) {
-          document.getElementById("" + counter + "" + index + "").className = "wordleCharsGreen";
-          document.getElementById("" + counter + "" + index + "").setAttribute("disabled", "disabled");
-         
-        } else if (charCheck[index] == 2) {
-          debugger;
-          var charCountEnteredWord = countString(copyEnteredWord.join(""),enteredWord[index].value);
-          var charCountKeyWord = countString(word,enteredWord[index].value);
-
-          if (charCountEnteredWord <= charCountKeyWord) {
-            document.getElementById("" + counter + "" + index + "").className = "wordleCharsYellow";
-            document.getElementById("" + counter + "" + index + "").setAttribute("disabled", "disabled");
-            continue;
-          } else if (charCountEnteredWord > charCountKeyWord) {
-            var enteredMatchIndexes = [];
-            enteredMatchIndexes = find(enteredWord[index].value,copyEnteredWord);
-            var charGreenCounter = 0;
-            var charYellowCounter = 0;
-            for (let index2 = 0; index2 < enteredMatchIndexes.length; index2++) {
-             
-                if(charCheck[enteredMatchIndexes[index2]]==1) {
-                  charGreenCounter++;
-                } else if (charCheck[enteredMatchIndexes[index2]]==2 && enteredMatchIndexes[index2] <= index) {
-                  charYellowCounter++;
-                }
-              }
-            }
-           // alert("charGreenCounter"+charGreenCounter);  alert("charYellowCounter"+charYellowCounter); alert(charGreenCounter+charYellowCounter);
-
-            if((charGreenCounter+charYellowCounter)> charCountKeyWord) {
-              document.getElementById("" + counter + "" + index + "").className = "wordleCharsGrey";
-              document.getElementById("" + counter + "" + index + "").setAttribute("disabled", "disabled");
-            } else {
-              document.getElementById("" + counter + "" + index + "").className = "wordleCharsYellow";
-              document.getElementById("" + counter + "" + index + "").setAttribute("disabled", "disabled");
-            }
-          } else if (charCheck[index] == 0) {
-          
-          document.getElementById("" + counter + "" + index + "").className = "wordleCharsGrey";
-          document.getElementById("" + counter + "" + index + "").setAttribute("disabled", "disabled");
-        }        
-
-
-      }
-
-
-      if (matchCounter == enteredWord.length) {
-        showMessage(dispMsgComplete);
-        return;
-      } else if (counter == (enteredWord.length+1) && matchCounter < (enteredWord.length+1)) {
-        
-        showMessage("The word is "+word);
-        return;
-      }
-              
-      
-      
-      document.getElementsByName("row" + counter).forEach(e => {
-        e.disabled = true;
-      });
-      
-      counter++;
-      
-      document.getElementsByName("row" + counter).forEach(e => {
-        e.disabled = false;
-      });
-      document.getElementById(counter+"0").focus(); // Bring focus to next row first box
-    }
-
-
-    function matchingLogic(keyWrd, enteredChar, index) {
-
-      if (keyWrd[index] == enteredChar) {
-        return 1;
-      } else if (keyWrd.includes(enteredChar)) {
-        return 2;
-      } else {
-        return 0;
-      }
-    }
-   
-    //Show snackbar message onscreen
-    function showMessage(dispMsg) {
-     // alert(dispMsg);
-    document.getElementById("snackbar").innerHTML = dispMsg;
-      
-      var x = document.getElementById("snackbar");
-      x.className = "show";
-      setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
-    }
-
-  </script>
+  <link rel="stylesheet" href="wordStyle.css">
+  <link rel="stylesheet" href="popUp.css">
+  <script src="./wordScript.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.0/html2canvas.min.js"></script>
   <script>
-      $(document).ready(function(){
+/*       $(document).ready(function(){
       $(".wordlechars").keyup(function(e) {
           if (e.which == 8 || e.which == 46) {
             $(this).prev('input').focus();
+            // $(this).val('');
         }
-        else {
-            $(this).next('input').focus();     
+        else if (e.which == 9){
+            
+        } else if (e.which > 64 || e.which < 91) {
+          $(this).next('input').focus();     
         }
         });
 
-      });
+      }); */
+
+
+    $(document).on("keyup", function (e) {
+    debugger;
+    let enteredWord = document.getElementsByName("row" + counter + "");
+    var keyValue = String.fromCharCode(e.which).toUpperCase();
+    if(e.which == 8) {
+      for (let index = enteredWord.length -1; index >= 0; index--) {
+        if(enteredWord[index].value.length == 0 ) {
+          continue;
+        } else {
+          enteredWord[index].value = "";
+          return;
+        }
+      }  
+    } else if ((e.which >=65 && e.which <=90) || (e.which >=97 && e.which <=122)){
+      for (let index = 0 ; index < enteredWord.length; index++) {
+        if(enteredWord[index].value.length == 0 ) {
+          enteredWord[index].value = keyValue;
+          return;
+        } else {
+          continue;
+        }
+      }
+  } else if (e.which ==13) {
+    onSubmit();
+  } else {
+    return false;
+  }
+
+  });
   </script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
 </head>
 
 <body class="bodycenter" onload="onPageload()">
 
-  <h2 class="center" style="text-align: center; font-family: Comic Sans MS">WORDLE FOR KIDS</h2>
 
-  <div class="center" style="clear:both;  text-align:center;">
-    <input type="text" id="00" name="row0" maxlength="1" class="wordlechars"> <input type="text" id="01" name="row0" maxlength="1" class="wordlechars"> <input type="text" id="02" name="row0" maxlength="1" class="wordlechars"> <br><br>
-    <input type="text" id="10" name="row1" maxlength="1" class="wordlechars"> <input type="text" id="11" name="row1" maxlength="1" class="wordlechars"> <input type="text" id="12" name="row1" maxlength="1" class="wordlechars"> <br><br>
+  <div id="wordgrid" class="center fullheight" style="clear:both;  text-align:center; background-color: rgb(235, 246, 247); opacity: 1;">
+    <h2 id="heading" class="center" style="text-align: center; font-size: 35px; text-underline-position: below; font-family: Comic Sans MS;">TODDLE</h2>
+    <div id="dateDiv"  class="linkInvisible">
+      <script>
+      date = new Date().toLocaleDateString();
+      document.write(date);
+      </script>
+    </div>
+    <div class="wordleGrid" id="wordleGrid">
+    <input type="text" id="00" name="row0" maxlength="1" class="wordlechars"> <input type="text" id="01" name="row0" maxlength="1" class="wordlechars"> <input type="text" id="02" name="row0" maxlength="1" class="wordlechars"> <br>
+    <input type="text" id="10" name="row1" maxlength="1" class="wordlechars"> <input type="text" id="11" name="row1" maxlength="1" class="wordlechars"> <input type="text" id="12" name="row1" maxlength="1" class="wordlechars"> <br>
     <div id="snackbar"></div>
-    <input type="text" id="20" name="row2" maxlength="1" class="wordlechars"> <input type="text" id="21" name="row2" maxlength="1" class="wordlechars"> <input type="text" id="22" name="row2" maxlength="1" class="wordlechars"> <br><br>
-    <input type="text" id="30" name="row3" maxlength="1" class="wordlechars"> <input type="text" id="31" name="row3" maxlength="1" class="wordlechars"> <input type="text" id="32" name="row3" maxlength="1" class="wordlechars"> <br><br>
-    <input type="text" id="40" name="row4" maxlength="1" class="wordlechars"> <input type="text" id="41" name="row4" maxlength="1" class="wordlechars"> <input type="text" id="42" name="row4" maxlength="1" class="wordlechars"> <br><br>
+    <input type="text" id="20" name="row2" maxlength="1" class="wordlechars"> <input type="text" id="21" name="row2" maxlength="1" class="wordlechars"> <input type="text" id="22" name="row2" maxlength="1" class="wordlechars"> <br>
+    <input type="text" id="30" name="row3" maxlength="1" class="wordlechars"> <input type="text" id="31" name="row3" maxlength="1" class="wordlechars"> <input type="text" id="32" name="row3" maxlength="1" class="wordlechars"> <br>
+    <input type="text" id="40" name="row4" maxlength="1" class="wordlechars"> <input type="text" id="41" name="row4" maxlength="1" class="wordlechars"> <input type="text" id="42" name="row4" maxlength="1" class="wordlechars"> <br>
+    <input type="text" id="50" name="row5" maxlength="1" class="wordlechars"> <input type="text" id="51" name="row5" maxlength="1" class="wordlechars"> <input type="text" id="52" name="row5" maxlength="1" class="wordlechars"> <br>
+    </div>
+    <br>
+    <div id="keyboard">
+    <input type="button" id="A" class="nothing" value="A" onclick="onKeyboardClick(this.id)">
+    <input type="button" id="B" class="nothing" value="B" onclick="onKeyboardClick(this.id)">
+    <input type="button" id="C" class="nothing" value="C" onclick="onKeyboardClick(this.id)">
+    <input type="button" id="D" class="nothing" value="D" onclick="onKeyboardClick(this.id)">
+    <input type="button" id="E" class="nothing" value="E" onclick="onKeyboardClick(this.id)">
+    <input type="button" id="F" class="nothing" value="F" onclick="onKeyboardClick(this.id)">
+    <input type="button" id="G" class="nothing" value="G" onclick="onKeyboardClick(this.id)">
+    <input type="button" id="H" class="nothing" value="H" onclick="onKeyboardClick(this.id)">
+    <br>
+    <input type="button" id="I" class="nothing" value="I" onclick="onKeyboardClick(this.id)">
+    <input type="button" id="J" class="nothing" value="J" onclick="onKeyboardClick(this.id)">
+    <input type="button" id="K" class="nothing" value="K" onclick="onKeyboardClick(this.id)">
+    <input type="button" id="L" class="nothing" value="L" onclick="onKeyboardClick(this.id)">
+    <input type="button" id="M" class="nothing" value="M" onclick="onKeyboardClick(this.id)">
+    <input type="button" id="N" class="nothing" value="N" onclick="onKeyboardClick(this.id)">
+    <input type="button" id="O" class="nothing" value="O" onclick="onKeyboardClick(this.id)">
+    <input type="button" id="P" class="nothing" value="P" onclick="onKeyboardClick(this.id)">
+    <br>
+    <input type="button" id="Q" class="nothing" value="Q" onclick="onKeyboardClick(this.id)">
+    <input type="button" id="R" class="nothing" value="R" onclick="onKeyboardClick(this.id)">
+    <input type="button" id="S" class="nothing" value="S" onclick="onKeyboardClick(this.id)">
+    <input type="button" id="T" class="nothing" value="T" onclick="onKeyboardClick(this.id)">
+    <input type="button" id="U" class="nothing" value="U" onclick="onKeyboardClick(this.id)">
+    <input type="button" id="V" class="nothing" value="V" onclick="onKeyboardClick(this.id)">
+    <input type="button" id="W" class="nothing" value="W" onclick="onKeyboardClick(this.id)">
+    <input type="button" id="X" class="nothing" value="X" onclick="onKeyboardClick(this.id)">
+    <br>
+    <input type="button" id="enter" class="specialKeys" value="ENTER" onclick="onSubmit()">
+    <input type="button" id="Y" class="nothing" value="Y" onclick="onKeyboardClick(this.id)">
+    <input type="button" id="Z" class="nothing" value="Z" onclick="onKeyboardClick(this.id)">
+    <input type="button" id="back" class="specialKeys" value="DELETE" onclick="onKeyboardClick(this.id)">
+    <br>
+  </div>
+  <input type="button" id="buttonPress" value="Submit" style="height:40px; width:200px; font-size: 20px; visibility: hidden;"  onclick="onSubmit()">
+  <div class="pop">
+    <label for="3" class="open" id="howTo"><b>&#63;</b></label>
+    <input type="checkbox" id="3" />
+    <div class="modal">
+      <div class="modal__inner">
+          <p>Guess the Word in 6 tries</p>
+          <p><span style="background-color: rgb(0, 255, 21);">Green</span> means correct letter correct spot</p>
+          <p><span style="background-color: rgb(243, 247, 3);">Yellow</span> means correct letter wrong spot</p>
+          <p><span style="background-color: rgb(156, 160, 156);">Gray</span> means letter is not in the word</p>
+          <p>For example: if the word of the day is TIP, below is what you would see for entering PIN</p>
+          <p><span style="background-color: rgb(243, 247, 3); font-size:140%; padding: 7px; border: 2px solid rgb(10, 10, 10)"> P </span><span style="background-color: rgb(0, 255, 21); font-size:140%;padding: 7px; border: 2px solid rgb(10, 10, 10)"> I </span><span style="background-color: rgb(156, 160, 156); font-size:140%; padding: 7px; border: 2px solid rgb(10, 10, 10)"> N </span></p>
+          <h4 id="disclaimer"><a href="https://www.powerlanguage.co.uk/wordle/" target="_blank" rel="noopener noreferrer">Original WORDLE</a></h4>
+          <label class="btn-close" for="3">X</label>
+      </div>
+    </div>
     
-    <input type="submit" value="Submit" style="height:50px; width:100px; font-size: 25px; font-family: Comic Sans MS;"  onclick="onSubmit()">
-   
+</div>
+
   </div>
 
-  
-
-
 </body>
-
 </html>

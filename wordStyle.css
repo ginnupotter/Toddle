@@ -1,0 +1,272 @@
+
+html, body {
+    height: 100%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    position: relative;
+    display: table-cell;
+    vertical-align: top;
+    font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+    /* background-image: url('Wordle.jpg'); */
+}
+
+.linkInvisible {
+  display: none;
+}
+
+.linkVisible {
+  display: block !important;
+  text-align: center;
+  font-size: 25px;
+  
+}
+
+.fullheight {
+  height: 100%;
+  width: 100%;
+}
+
+.center {
+  margin: 0 auto;
+  padding: 10px;
+}
+.bodycenter {
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.parent {
+  display: grid;
+  place-items: center;
+}
+
+.wordlechars {
+background-color: rgb(255, 255, 255);
+color: rgb(5, 4, 4);
+width: 25pt;
+height: 25pt;
+font-size:20px;
+text-transform: uppercase;
+text-align: center;
+font-weight: bold;
+margin-bottom: 4px;
+border-color: rgb(212, 209, 209);
+opacity: 1 !important;
+}
+
+.wordleCharsGreen {
+background-color: rgb(65, 179, 20);
+color: rgb(4, 5, 5);
+width: 25pt;
+height: 25pt;
+font-size:20px;
+text-transform: uppercase;
+border-radius: 5px;
+text-align: center;
+font-weight: bold;
+margin-bottom: 4px;
+}
+
+
+.wordleCharsYellow {
+background-color: rgb(240, 237, 61);
+color: rgb(4, 5, 5);
+width: 25pt;
+height: 25pt;
+font-size:20px;
+text-transform: uppercase;
+border-radius: 5px;
+text-align: center;
+font-weight: bold;
+margin-bottom: 4px;
+}
+
+.wordleCharsGrey {
+background-color: rgb(156, 160, 160);
+color: rgb(4, 5, 5);
+width: 25pt;
+height: 25pt;
+font-size:20px;
+text-transform: uppercase;
+border-radius: 5px;
+text-align: center;
+font-weight: bold;
+margin-bottom: 4px;
+}
+
+
+.nothing{
+
+  height: 45px;
+  width: 25px;
+  border-color: rgb(245, 239, 239);
+  background-color: rgb(255, 246, 246);
+  opacity: 1;
+  font-weight: bold;
+  font-size: medium;
+  text-align: center;
+  margin-bottom: 7px;
+  margin-right: 5px;
+  padding: 0px;
+  -webkit-appearance: none !important;
+  touch-action: manipulation;
+  
+}
+
+.specialKeys {
+  height: 45px;
+  border-color: rgb(245, 239, 239);
+  background-color: rgb(255, 246, 246);
+  opacity: 1;
+  font-weight: bold;
+  font-size: medium;
+  text-align: center;
+  margin-bottom: 7px;
+  margin-right: 5px;
+ -webkit-appearance: none !important;
+ touch-action: manipulation;
+}
+
+.wordleKeyboardGreen {
+  background-color: rgb(65, 179, 20);
+  color: rgb(4, 5, 5);
+  border-color: rgb(245, 239, 239);
+  height: 45px;
+  width: 25px;
+  text-align: center;
+  font-weight: bold;
+  font-size: medium;
+  margin-bottom: 7px;
+  margin-right: 5px;
+  padding: 0px;
+  -webkit-appearance: none !important;
+  touch-action: manipulation;
+}
+
+.wordleKeyboardYellow {
+  background-color: rgb(240, 237, 61);
+  color: rgb(4, 5, 5);
+  border-color: rgb(245, 239, 239);
+  height: 45px;
+  width: 25px;
+  text-align: center;
+  font-weight: bold;
+  font-size: medium;
+  margin-bottom: 7px;
+  margin-right: 5px;
+  padding: 0px;
+  -webkit-appearance: none !important;
+  touch-action: manipulation;
+}
+.wordleKeyboardGrey {
+  background-color: rgb(156, 160, 160);
+  color: rgb(4, 5, 5);
+  border-color: rgb(245, 239, 239);
+  font-weight: bold;
+  height: 45px;
+  width: 25px;
+  text-align: center;
+  font-size: medium;
+  font-weight: bold;
+  margin-bottom: 7px;
+  margin-right: 5px;
+  padding: 0px;
+  -webkit-appearance: none !important;
+  touch-action: manipulation;
+}
+
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+visibility: hidden;
+/* Hidden by default. Visible on click */
+min-width: 70px;
+/* Set a default minimum width */
+margin-left: -124px;
+/* Divide value of min-width by 2 */
+background-color: #333;
+/* Black background color */
+color: #fff;
+/* White text color */
+text-align: center;
+/* Centered text */
+font-size: 25px;
+border-radius: 2px;
+/* Rounded borders */
+padding: 16px;
+/* Padding */
+position: fixed;
+/* Sit on top of the screen */
+z-index: 1;
+/* Add a z-index if needed */
+left: 50%;
+/* Center the snackbar */
+bottom: auto;
+/* 30px from the bottom */
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+visibility: visible;
+/* Show the snackbar */
+/* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+However, delay the fade out process for 2.5 seconds */
+-webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+from {
+  bottom: auto;
+  opacity: 0;
+}
+
+to {
+  bottom: auto;
+  opacity: 1;
+}
+}
+
+@keyframes fadein {
+from {
+  bottom: auto;
+  opacity: 0;
+}
+
+to {
+  bottom: auto;
+  opacity: 1;
+}
+}
+
+@-webkit-keyframes fadeout {
+from {
+  bottom: auto;
+  opacity: 1;
+}
+
+to {
+  bottom: auto;
+  opacity: 0;
+}
+}
+
+@keyframes fadeout {
+from {
+  bottom: auto;
+  opacity: 1;
+}
+
+to {
+  bottom: auto;
+  opacity: 0;
+}
+}
