@@ -240,7 +240,7 @@
         document.getElementById("buttonPress").style.visibility = "visible";
         matched = 1;
         return;
-      } else if (counter == enteredWord.length && matchCounter < enteredWord.length) {
+      } else if (counter == 5 && matchCounter < enteredWord.length) {
         
         showMessage("The word is "+word);
         return;
